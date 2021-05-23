@@ -21,3 +21,26 @@ nav {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
 }
+
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-buy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding: 0;
+
+}
+.cross-text {
+    text-decoration-line: line-through;
+}
+.btn-buy {
+    position: relative;
+    min-width: 90% !important;
+}
