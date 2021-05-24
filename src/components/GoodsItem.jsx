@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import { ShopContext } from "../context";
 
 function GoodsItem(props) {
     // console.log(backgroundUrl)
@@ -9,8 +10,9 @@ function GoodsItem(props) {
         displayDescription,
         price,
         backgroundUrl,
-        addToBasket = Function.prototype,
     } = props;
+
+    const { addToBasket } = useContext(ShopContext)
     return (
 
         <div className="card" >
@@ -21,11 +23,11 @@ function GoodsItem(props) {
             <div className="card-content">
                 <span className="card-title">{displayName}</span>
                 <span className="">тип: {displayType}</span>
-                <p>
+
                     <blockquote className="card-title">
                         {displayDescription}
                     </blockquote>
-                </p>
+
             </div>
             <div className="card-action card-buy">
                 <div className='price'>

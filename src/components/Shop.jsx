@@ -24,7 +24,7 @@ const Shop = () => {
 
 
 
-        return console.log('goodbye')
+
     }, [])
 
     const closeAlert = () => {
@@ -35,38 +35,9 @@ const Shop = () => {
         setOrder(newOrder)
     }
 
-    const addToBasket = (item) => {
-        const itemIndex = order.findIndex(
-            (orderItem) => orderItem.mainId === item.mainId
-        );
-
-        if (itemIndex < 0) {
-            const newItem = {
-                ...item,
-                quantity: 1,
-            };
-            setOrder([...order, newItem]);
-        } else {
-            const newOrder = order.map((orderItem, index) => {
-                if (index === itemIndex) {
-                    return {
-                        ...orderItem,
-                        quantity: orderItem.quantity + 1,
-                    };
-                } else {
-                    return orderItem;
-                }
-            });
-
-            setOrder(newOrder);
-        }
-        setAlertName(item.displayName);
-
-    };
 
     const handleBasketShow = () => {
         setBasketShow(!isBasketShow);
-        console.log(order)
     }
 
     const incrementOrder = (mainId) => {

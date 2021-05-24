@@ -6,7 +6,6 @@ function GoodsList(props) {
 
     const {
         goods = [],
-        addToBasket = Function.prototype,
     } = props;
 
     if (!goods.length) {
@@ -18,7 +17,7 @@ function GoodsList(props) {
     return (
 
         <div className='goods'>
-            {goods.map((item) => (<GoodsItem key={item.mainId}   {...item} addToBasket={addToBasket}
+            {goods.map((item) => (<GoodsItem key={item.mainId}   {...item}
                                              backgroundUrl={item.displayAssets[0].full_background}/>))}
         </div>)
 
