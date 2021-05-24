@@ -1,4 +1,3 @@
 # React shop
-udemy Михаил Непомнящий
 
-`demo`
+https://pavelmelnik94.github.io/react-shop/
