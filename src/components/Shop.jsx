@@ -28,9 +28,15 @@ const Shop = () => {
         return console.log('goodbye')
     }, [])
 
+
+    const removeFromBasket = (mainId) => {
+        const newOrder = order.filter(el => el.mainId !== mainId)
+        setOrder(newOrder)
+    }
+
     const addToBasket = (item) => {
         const itemIndex = order.findIndex(
-            (orderItem) => orderItem.id === item.mainId
+            (orderItem) => orderItem.mainId === item.mainId
         );
 
         if (itemIndex < 0) {
@@ -61,6 +67,36 @@ const Shop = () => {
         console.log(order)
     }
 
+    const incrementOrder = (mainId) => {
+        const newOrder = order.map((el) => {
+            if (el.mainId === mainId) {
+                const newQuanity = el.quantity +1;
+                return {
+                    ...el,
+                    quantity: newQuanity,
+                };
+            }else {
+                return el;
+            }
+        });
+        setOrder(newOrder)
+    };
+
+    const decrementOrder = (mainId) => {
+        const newOrder = order.map((el) => {
+            if (el.mainId === mainId) {
+                const newQuanity = el.quantity -1;
+                return {
+                    ...el,
+                    quantity: newQuanity >= 0 ? newQuanity : 0,
+                };
+            } else {
+                return el;
+            }
+        });
+        setOrder(newOrder)
+    };
+
 
     return (
 
@@ -68,7 +104,13 @@ const Shop = () => {
             <Cart quantity={order.length} handleBasketShow={handleBasketShow}/>
             { loading ? <Preloader /> : <GoodsList setOrder={setOrder} addToBasket={addToBasket} goods={goods}/>}
 
-            { isBasketShow && <BasketList order={order} /> }
+            { isBasketShow &&
+            <BasketList
+                order={order}
+                handleBasketShow={handleBasketShow}
+                removeFromBasket={removeFromBasket}
+                incrementOrder={incrementOrder}
+                decrementOrder={decrementOrder} /> }
         </main>
     )
 

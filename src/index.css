@@ -6,6 +6,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+li {
+    list-style: none;
+}
 
 nav {
     padding: 0 1rem;
@@ -43,6 +46,7 @@ nav {
 .cross-text {
     text-decoration-line: line-through;
 }
+
 .btn-buy {
     position: relative;
     min-width: 90% !important;
@@ -67,3 +71,55 @@ nav {
 .cart-quantity {
 
 }
+
+.basket-list {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #fff;
+    width: 35rem;
+    max-height: 35rem;
+    max-width: 95%;
+
+    box-shadow: inset -1px 3px 8px 5px #1f87ff,
+    2px 5px 16px 0px #0b325e,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+    overflow-y: auto;
+
+    animation: show 500ms ease-in-out;
+}
+
+.basket-close {
+    color: white;
+    cursor: pointer;
+}
+
+.basket-delete {
+    cursor: pointer;
+}
+
+
+@keyframes show {
+    from {
+        top: 70%;
+        opacity: 0;
+    }
+    to {
+        top: 50%;
+        opacity: 1;
+    }
+
+}
+
+.order-name {
+    margin-right: 1rem;
+}
+
+.basket-quantity {
+    vertical-align: middle;
+    cursor: pointer;
+    color: #26a69a
+}
+
