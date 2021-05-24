@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import {GoodsItem} from "./GoodsItem";
 
 
-function GoodsList( props ) {
+function GoodsList(props) {
 
-    const { goods = [] } = props;
+    const {
+        goods = [],
+        addToBasket = Function.prototype,
+    } = props;
 
     if (!goods.length) {
-       return <h3>nothing!</h3>
+        return <h3>nothing!</h3>
     }
 
 
@@ -16,7 +19,8 @@ function GoodsList( props ) {
     return (
 
         <div className='goods'>
-            { goods.map((item) => (<GoodsItem key={item.mainId} {...item} backgroundUrl={item.displayAssets[0].full_background} />))}
+            {goods.map((item) => (<GoodsItem key={item.mainId}   {...item} addToBasket={addToBasket}
+                                             backgroundUrl={item.displayAssets[0].full_background}/>))}
         </div>)
 
 }

@@ -47,3 +47,23 @@ nav {
     position: relative;
     min-width: 90% !important;
 }
+
+.cart {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    padding: 1rem;
+}
+
+@media (min-width: 767px) {
+    .cart {
+        top: 5rem;
+        bottom: unset;
+    }
+}
+
+.cart-quantity {
+
+}

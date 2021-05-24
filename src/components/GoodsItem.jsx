@@ -8,28 +8,32 @@ function GoodsItem(props) {
         displayType,
         displayDescription,
         price,
-        backgroundUrl
+        backgroundUrl,
+        addToBasket = Function.prototype,
     } = props;
     return (
 
-        <div className="card" id={mainId}>
-            <div className="card-image" >
+        <div className="card" >
+            <div className="card-image">
                 <img src={backgroundUrl} alt={displayName}/>
 
             </div>
             <div className="card-content">
                 <span className="card-title">{displayName}</span>
                 <span className="">тип: {displayType}</span>
-                <p><blockquote className="card-title">
-                    {displayDescription}
-                </blockquote></p>
+                <p>
+                    <blockquote className="card-title">
+                        {displayDescription}
+                    </blockquote>
+                </p>
             </div>
             <div className="card-action card-buy">
                 <div className='price'>
-                <span className='right '> без скидки: <span className='cross-text' style={{fontSize: '1.3rem'}} >{price.regularPrice}</span> </span>
-                <span className='right'> со скидкой: <span style={{fontSize: '2rem'}}> {price.finalPrice} руб.</span></span>
+
+                    <span className='right'> цена: <span
+                        style={{fontSize: '2rem'}}> {price.finalPrice} руб.</span></span>
                 </div>
-                <button className='btn btn-buy' >Добавить</button>
+                <button className='btn btn-buy' onClick={() => addToBasket({mainId, displayName, ...price})}>Добавить</button>
 
             </div>
         </div>)

@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import {API_URL, API_KEY} from "../config";
 import Preloader from "./Preloader";
 import GoodsList from "./GoodsList";
+import {Cart} from "./Cart";
+import {BasketList} from "./BasketList";
+
+
 
 
 const Shop = () => {
 
     const  [goods, setGoods] = useState([]);
     const  [loading, setLoading] = useState(true);
-
+    const  [order, setOrder] = useState([]);
+    const [isBasketShow, setBasketShow] = useState(false);
 
     useEffect(function getGoods() {
         fetch(API_URL, {headers: {'Authorization': API_KEY,} })
@@ -18,13 +23,52 @@ const Shop = () => {
                 setLoading(false)
             })
 
+
+
         return console.log('goodbye')
     }, [])
+
+    const addToBasket = (item) => {
+        const itemIndex = order.findIndex(
+            (orderItem) => orderItem.id === item.mainId
+        );
+
+        if (itemIndex < 0) {
+            const newItem = {
+                ...item,
+                quantity: 1,
+            };
+            setOrder([...order, newItem]);
+        } else {
+            const newOrder = order.map((orderItem, index) => {
+                if (index === itemIndex) {
+                    return {
+                        ...orderItem,
+                        quantity: orderItem.quantity + 1,
+                    };
+                } else {
+                    return orderItem;
+                }
+            });
+
+            setOrder(newOrder);
+        }
+        // setAlertName(item.name);
+    };
+
+    const handleBasketShow = () => {
+        setBasketShow(!isBasketShow);
+        console.log(order)
+    }
+
 
     return (
 
         <main className='container content'>
-            { loading ? <Preloader /> :  <GoodsList goods={goods}/>}
+            <Cart quantity={order.length} handleBasketShow={handleBasketShow}/>
+            { loading ? <Preloader /> : <GoodsList setOrder={setOrder} addToBasket={addToBasket} goods={goods}/>}
+
+            { isBasketShow && <BasketList order={order} /> }
         </main>
     )
 
