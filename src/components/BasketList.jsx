@@ -26,6 +26,11 @@ function BasketList(props) {
                 <li className="collection-item"> корзина пуста </li>}
             <li className="collection-item active">Общая стоимость: {totalPrice} руб.</li>
 
+            <li className="collection-item "> <button
+                className="btn btn-small waves-effect waves-light cyan darken-3" type="submit" name="action">Оплатить
+                <i className="material-icons right">attach_money</i>
+            </button></li>
+
         </div>
     )
 };

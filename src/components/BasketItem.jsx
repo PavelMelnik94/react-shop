@@ -7,7 +7,6 @@ function BasketItem(props) {
         incrementOrder = Function.prototype,
         decrementOrder = Function.prototype,} = props;
 
-    console.log(mainId)
     return (
         <li  className="collection-item">
            <span className='order-name'> {displayName} </span>   <span>

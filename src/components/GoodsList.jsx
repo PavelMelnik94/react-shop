@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {GoodsItem} from "./GoodsItem";
 
 
@@ -14,8 +14,7 @@ function GoodsList(props) {
     }
 
 
-    const backgroundUrl = goods.map(obj => obj.displayAssets[0].full_background)
-    // console.log(goods[0].displayAssets[0].full_background)
+
     return (
 
         <div className='goods'>
